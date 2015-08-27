@@ -22,12 +22,13 @@ def build_classes(source_dir, bin_dir, recursive=True, *class_paths):
     makedirs(bin_dir, exist_ok=True)
     args = ["javac", "-d", bin_dir]
     class_path = __get_class_path__(class_paths)
-    if class_path != ""
+    if class_path != "":
         args = args + ["-cp"] + [class_path]
     to_compile = get_files(source_dir, recursive, '.java')
     args = args + to_compile
     subprocess.check_call(args)
 
+# Build's jar with all files inside input_dir
 def build_jar(input_dir, output_file, main_class=None):
     args = ["jar"]
     if main_class != None:
